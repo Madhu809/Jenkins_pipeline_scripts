@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        lebel "slave2"
+    }
+    stages{
+        stage('stage1'){
+            steps{
+                sh "sleep 5"
+            }
+        }
+        stage('stage2'){
+            steps{
+                sh '''
+                    #!/bin/bash 
+                    pwd
+                    ls -ltr
+                    ps -ef
+                    htop
+                    top
+                '''
+            }
+        }
+    }
+}
+    
