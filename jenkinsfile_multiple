@@ -4,17 +4,13 @@ pipeline {
 
     stages{
         stage('stage1'){
-            agent {
-        label "jenkins_slave1"
-    }
+            //agent {label "jenkins_slave1"}
             steps{
                 sh "sleep 10"
             }
         }
         stage('stage2'){
-            agent {
-        label "jenkins_slave2"
-    }
+            //agent{label "jenkins_slave2"}
             steps{
                 sh '''
                     #!/bin/bash 
