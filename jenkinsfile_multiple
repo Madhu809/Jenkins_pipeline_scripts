@@ -1,5 +1,7 @@
 pipeline {
-    agent {label "jenkins_slave1" && "jenkins_slave2" }
+    //agent {label "jenkins_slave1" && "jenkins_slave2" }
+    agent {label "jenkins_slave1" || "jenkins_slave2" }
+
     stages{
         stage('stage1'){
             agent {
