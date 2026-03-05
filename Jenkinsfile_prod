@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        label "jenkins_master"
-    }
+    agent {label "jenkins_slave" && "jenkins_slave2"}
+        agent{label "jenkins_slave1" || "jenkins_slave2"}
+        agent {label "!jenkins_master"}
+    
     stages{
         stage('stage1'){
             steps{
@@ -13,6 +14,7 @@ pipeline {
                 sh '''
                     #!/bin/bash 
                     pwd
+                    sleep 10
                     ls -ltr
                     ps -ef
                 '''

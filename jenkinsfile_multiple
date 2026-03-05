@@ -1,20 +1,25 @@
-ppipeline {
-    agent none
+pipeline {
+    agent {label "jenkins_slave1" && "jenkins_slave2" }
     stages{
         stage('stage1'){
+            agent {
+        label "jenkins_slave1"
+    }
             steps{
-                sh "sleep 5"
+                sh "sleep 10"
             }
         }
         stage('stage2'){
+            agent {
+        label "jenkins_slave2"
+    }
             steps{
                 sh '''
                     #!/bin/bash 
+                    sleep 10
                     pwd
                     ls -ltr
                     ps -ef
-                    htop
-                    top
                 '''
             }
         }
