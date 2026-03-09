@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('stage1'){
                      steps{
-                        catchError(buildResults:'SUCCESS', stageResult:'FAILURE')
+                        catchError(buildResult:'SUCCESS', stageResult:'FAILURE')
                     sh '''
                     #!/bin/bash
                     sleep 10
