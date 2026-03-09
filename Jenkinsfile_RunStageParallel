@@ -1,0 +1,41 @@
+ipeline {
+    agent any
+    
+    stages('parallel stages'){
+        stage('stage1'){
+                     steps{
+                        sh "sleep 10"
+                    }
+                }
+        stage('stage2'){
+            parallel{
+                stage("stage2-1"){            
+                    steps{
+                sh '''
+                    #!/bin/bash 
+                    pwd
+                    sleep 10
+                    ls -ltr
+                    ps -ef
+                '''
+                    }
+                }
+            
+            
+                stage("stage2-2"){
+                    steps{
+                sh '''
+                    #!/bin/bash
+                    echo "madhu3" > file1.txt
+                '''
+                    }
+                 }
+             }
+        }
+        stage('Final'){
+            steps{
+                sh "cat file1.txt"           
+                }
+        }
+    }
+}
