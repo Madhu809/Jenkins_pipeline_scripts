@@ -1,7 +1,7 @@
-ipeline {
+pipeline {
     agent any
     
-    stages('parallel stages'){
+    stages{
         stage('stage1'){
                      steps{
                         sh "sleep 10"
@@ -20,8 +20,6 @@ ipeline {
                 '''
                     }
                 }
-            
-            
                 stage("stage2-2"){
                     steps{
                 sh '''
